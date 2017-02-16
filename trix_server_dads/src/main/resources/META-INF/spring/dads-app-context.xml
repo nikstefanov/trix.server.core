@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+  <bean id="fileDADSFactory"
+    class="com.trix.dads.plugin.factory.FileDADataSourcePluginFactory">
+  </bean>
+  
+  <bean id="darDADSFactory"
+    class="com.trix.dads.plugin.factory.DarDADataSourcePluginFactory">
+  </bean>
+  
+  <bean id="daDataSource"
+    class="com.trix.dads.DADataSource">
+    <property name="pluginFactories">
+      <map>
+        <entry key="file" value-ref="fileDADSFactory" />
+        <entry key="dar" value-ref="darDADSFactory" />
+      </map>
+    </property>
+  </bean>    
+        
+        
+</beans>
